@@ -5,13 +5,13 @@ import { CrossCircledIcon } from "@radix-ui/react-icons";
 import styles from "./message.module.css";
 import { useEffect } from "react";
 
-const Message = ({ color = "blue" }) => {
-  const { message, clearMessage, setMsg } = useMessage();
+const Message = () => {
+  const { message, clearMessage, setMsgColor, color } = useMessage();
   useEffect(() => {
     if (message) {
-      setTimeout(setMsg, 3000);
+      setTimeout(setMsgColor, 3000);
     }
-  }, [message, setMsg]);
+  }, [message, setMsgColor]);
   return (
     <div className={styles.rootMessage}>
       <Callout.Root color={color} className={styles.root}>

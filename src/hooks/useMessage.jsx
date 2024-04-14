@@ -5,8 +5,10 @@ const MessageContext = createContext();
 
 export const MessageProvider = ({ children }) => {
   const [message, setMessage] = useState(null);
+  const [color, setColor] = useState("blue");
 
-  const setMsg = (msg) => {
+  const setMsgColor = (msg, _color = "blue") => {
+    setColor(_color);
     setMessage(msg);
   };
 
@@ -15,7 +17,9 @@ export const MessageProvider = ({ children }) => {
   };
 
   return (
-    <MessageContext.Provider value={{ message, setMsg, clearMessage }}>
+    <MessageContext.Provider
+      value={{ message, setMsgColor, clearMessage, color }}
+    >
       {children}
     </MessageContext.Provider>
   );
