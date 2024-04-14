@@ -1,0 +1,13 @@
+.rootMessage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  min-width: 400px;
+  margin-bottom: 1rem;
+}
+
+.root {
+  display: flex;
+  justify-content: space-between;
+}
