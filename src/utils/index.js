@@ -40,6 +40,12 @@ export const ABI = [
         name: "imageURI",
         type: "string",
       },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "desc",
+        type: "string",
+      },
     ],
     name: "Inventory",
     type: "event",
@@ -104,6 +110,11 @@ export const ABI = [
         name: "imageURI",
         type: "string",
       },
+      {
+        internalType: "string",
+        name: "desc",
+        type: "string",
+      },
     ],
     name: "listItem",
     outputs: [],
@@ -134,6 +145,11 @@ export const ABI = [
           {
             internalType: "string",
             name: "imageURI",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "desc",
             type: "string",
           },
         ],
@@ -188,10 +204,15 @@ export const ABI = [
         name: "imageURI",
         type: "string",
       },
+      {
+        internalType: "string",
+        name: "desc",
+        type: "string",
+      },
     ],
     stateMutability: "view",
     type: "function",
   },
 ];
 
-export const ContractAddress = "0x7999B1737a494163BE9665CFc17A30A3BB9C4a50";
+export const ContractAddress = "0x84ebf20cc54d3246A3aBc2C07c529D931eF6f913";

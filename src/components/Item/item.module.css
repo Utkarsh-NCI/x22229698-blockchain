@@ -1,3 +1,9 @@
 .root {
   margin: 4px;
 }
+.button {
+  margin-top: 4px;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}

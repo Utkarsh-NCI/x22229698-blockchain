@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Card, Inset, Text } from "@radix-ui/themes";
+import { Box, Button, Card, Inset, Text } from "@radix-ui/themes";
 import style from "./item.module.css";
 
 const Item = ({ imgURI, desc }) => {
@@ -23,6 +23,9 @@ const Item = ({ imgURI, desc }) => {
           is the art and technique of arranging type to make written language
           legible, readable and appealing when displayed.
         </Text>
+        <div className={style.button}>
+          <Button>Buy</Button>
+        </div>
       </Card>
     </Box>
   );
