@@ -22,8 +22,6 @@ const Home = () => {
       gas: 6721975,
       value: itemData.price,
     });
-
-    console.log(tx1);
   };
 
   const fetchAllItems = async () => {
@@ -32,7 +30,6 @@ const Home = () => {
       const contract = new web3.eth.Contract(ABI, ContractAddress);
       const itemsList = await contract.methods.getItems().call();
       setItems(itemsList);
-      console.log(itemsList);
     } catch (error) {
       console.error("Error fetching items:", error);
     }

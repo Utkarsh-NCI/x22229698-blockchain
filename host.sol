@@ -10,6 +10,7 @@ contract SportMarket {
     uint price;
     address payable seller;
     string imageURI;
+    string fallbackimageURI;
     string desc;
     string name;
   }
@@ -21,6 +22,7 @@ event Inventory(
     uint price,
     address seller,
     string imageURI,
+    string fallbackImageURI,
     string desc,
     string name
   );
@@ -31,11 +33,11 @@ event Inventory(
     uint price
   );
 
-  function listItem(uint price, string memory imageURI, string memory desc, string memory name) public payable {
+  function listItem(uint price, string memory imageURI,string memory fallbackImageURI, string memory desc, string memory name) public payable {
     require(price >= 0, "Free or Price should be greater than zero");
     address payable _sender = payable (msg.sender);
-    items[itemId] = Item(itemId,price, _sender, imageURI,desc,name);
-    emit Inventory(itemId, price , _sender, imageURI,desc,name);
+    items[itemId] = Item(itemId,price, _sender, imageURI,fallbackImageURI,desc,name);
+    emit Inventory(itemId, price , _sender, imageURI,fallbackImageURI,desc,name);
     itemId++;
 
   }
