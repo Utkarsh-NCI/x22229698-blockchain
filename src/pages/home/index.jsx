@@ -7,21 +7,28 @@ import { ABI, ContractAddress } from "../../utils";
 import Web3 from "web3";
 import { useState } from "react";
 import Item from "../../components/Item";
+import { useMessage } from "../../hooks/useMessage";
 
 const Home = () => {
   const { wallet } = useMetaMask();
   const [items, setItems] = useState([]);
+  const { setMsgColor } = useMessage();
 
   const buy = async (id) => {
     const web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(ABI, ContractAddress);
     const itemData = await contract.methods.items(id).call();
     console.log(itemData);
-    const tx1 = await contract.methods.buyItems(id, itemData.seller).send({
-      from: wallet.accounts[0],
-      gas: 6721975,
-      value: itemData.price,
-    });
+    const tx1 = await contract.methods
+      .buyItems(id, itemData.seller)
+      .send({
+        from: wallet.accounts[0],
+        gas: 6721975,
+        value: itemData.price,
+      })
+      .catch((e) => {
+        setMsgColor(e.message, "red");
+      });
   };
 
   const fetchAllItems = async () => {

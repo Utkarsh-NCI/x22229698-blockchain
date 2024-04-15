@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./seller.module.css";
 import { Box, Button, Flex, TextArea, TextField } from "@radix-ui/themes";
 import { useMetaMask } from "../../hooks/useMetaMask";
+import { useMessage } from "../../hooks/useMessage";
 import Web3 from "web3";
 import { ABI, ContractAddress } from "../../utils";
 
@@ -13,6 +14,7 @@ const Seller = () => {
   const [desc, setDesc] = useState("");
 
   const { wallet } = useMetaMask();
+  const { setMsgColor } = useMessage();
 
   const list = async () => {
     const web3 = new Web3(window.ethereum);
@@ -28,6 +30,9 @@ const Seller = () => {
       .send({
         gas: 6721975,
         from: wallet.accounts[0],
+      })
+      .catch((e) => {
+        setMsgColor(e.message, "red");
       });
     console.log(tx);
   };
