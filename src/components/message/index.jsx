@@ -1,6 +1,6 @@
 import React from "react";
 import { useMessage } from "../../hooks/useMessage";
-import { Callout } from "@radix-ui/themes";
+import { Callout, Progress } from "@radix-ui/themes";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import styles from "./message.module.css";
 import { useEffect } from "react";
@@ -20,6 +20,7 @@ const Message = () => {
           <CrossCircledIcon onClick={clearMessage} />
         </Callout.Icon>
       </Callout.Root>
+      <Progress duration="3s" color={color} />
     </div>
   );
 };
