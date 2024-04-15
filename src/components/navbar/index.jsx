@@ -54,6 +54,9 @@ const Nav = () => {
             <TabNav.Link href="/news" active={isActive("/news")}>
               News
             </TabNav.Link>
+            <TabNav.Link href="/seller" active={isActive("/seller")}>
+              Seller
+            </TabNav.Link>
           </TabNav.Root>
         </div>
 

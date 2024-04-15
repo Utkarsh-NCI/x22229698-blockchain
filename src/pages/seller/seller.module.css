@@ -1,0 +1,22 @@
+.rootContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.desc {
+  max-width: 600px;
+}
+
+.form {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.button {
+  width: 120px;
+  align-self: center;
+}

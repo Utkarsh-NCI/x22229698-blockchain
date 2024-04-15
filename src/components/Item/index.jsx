@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Button, Card, Inset, Text } from "@radix-ui/themes";
 import style from "./item.module.css";
+import { formatBalance } from "../../utils";
 
-const Item = ({ imgURI, desc }) => {
+const Item = ({ imgURI, desc, name, price, fallbackImageURI, id, buy }) => {
   return (
     <Box maxWidth="240px" className={style.root}>
       <Card size="2">
         <Inset clip="padding-box" side="top" pb="current">
           <img
-            src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            alt="Bold typography"
+            src={fallbackImageURI}
             style={{
               display: "block",
               objectFit: "cover",
@@ -17,14 +17,21 @@ const Item = ({ imgURI, desc }) => {
               height: 140,
               backgroundColor: "var(--gray-5)",
             }}
+            onError={(e) => {
+              console.log(e);
+            }}
           />
         </Inset>
+        <Text size="3" weight="bold" align="right" as="div">
+          {name}
+        </Text>
         <Text as="p" size="3">
-          is the art and technique of arranging type to make written language
-          legible, readable and appealing when displayed.
+          {desc}
         </Text>
         <div className={style.button}>
-          <Button>Buy</Button>
+          <Button onClick={() => buy(id)}>
+            Buy {formatBalance(price)} ETH
+          </Button>
         </div>
       </Card>
     </Box>

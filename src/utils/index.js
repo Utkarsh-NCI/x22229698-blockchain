@@ -43,7 +43,19 @@ export const ABI = [
       {
         indexed: false,
         internalType: "string",
+        name: "fallbackImageURI",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "string",
         name: "desc",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "name",
         type: "string",
       },
     ],
@@ -94,34 +106,6 @@ export const ABI = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "availableQuantity",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "imageURI",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "desc",
-        type: "string",
-      },
-    ],
-    name: "listItem",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "getItems",
     outputs: [
@@ -149,7 +133,17 @@ export const ABI = [
           },
           {
             internalType: "string",
+            name: "fallbackimageURI",
+            type: "string",
+          },
+          {
+            internalType: "string",
             name: "desc",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "name",
             type: "string",
           },
         ],
@@ -206,13 +200,56 @@ export const ABI = [
       },
       {
         internalType: "string",
+        name: "fallbackimageURI",
+        type: "string",
+      },
+      {
+        internalType: "string",
         name: "desc",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "name",
         type: "string",
       },
     ],
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "price",
+        type: "uint256",
+      },
+      {
+        internalType: "string",
+        name: "imageURI",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "fallbackImageURI",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "desc",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+    ],
+    name: "listItem",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
 ];
 
-export const ContractAddress = "0x84ebf20cc54d3246A3aBc2C07c529D931eF6f913";
+export const ContractAddress = "0x014ED19370D18a448Eb26bA382611aC43565071D";
