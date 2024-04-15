@@ -36,12 +36,6 @@ export const ABI = [
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "availableQuantity",
-        type: "uint256",
-      },
-      {
-        indexed: false,
         internalType: "string",
         name: "imageURI",
         type: "string",
@@ -71,12 +65,6 @@ export const ABI = [
         name: "price",
         type: "uint256",
       },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "quantity",
-        type: "uint256",
-      },
     ],
     name: "ItemBought",
     type: "event",
@@ -85,16 +73,16 @@ export const ABI = [
     inputs: [
       {
         internalType: "uint256",
-        name: "_itemID",
+        name: "itemID",
         type: "uint256",
       },
       {
-        internalType: "uint256",
-        name: "_quantity",
-        type: "uint256",
+        internalType: "address",
+        name: "seller",
+        type: "address",
       },
     ],
-    name: "buyItem",
+    name: "buyItems",
     outputs: [],
     stateMutability: "payable",
     type: "function",
@@ -124,6 +112,41 @@ export const ABI = [
   },
   {
     inputs: [],
+    name: "getItems",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "id",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256",
+          },
+          {
+            internalType: "address payable",
+            name: "seller",
+            type: "address",
+          },
+          {
+            internalType: "string",
+            name: "imageURI",
+            type: "string",
+          },
+        ],
+        internalType: "struct SportMarket.Item[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "itemId",
     outputs: [
       {
@@ -147,6 +170,11 @@ export const ABI = [
     outputs: [
       {
         internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
         name: "price",
         type: "uint256",
       },
@@ -154,11 +182,6 @@ export const ABI = [
         internalType: "address payable",
         name: "seller",
         type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "availableQuantity",
-        type: "uint256",
       },
       {
         internalType: "string",
@@ -171,4 +194,4 @@ export const ABI = [
   },
 ];
 
-export const ContractAddress = "0x0680dd0138A5f1C1cd5152bd9084De61B3e91A26";
+export const ContractAddress = "0x7999B1737a494163BE9665CFc17A30A3BB9C4a50";

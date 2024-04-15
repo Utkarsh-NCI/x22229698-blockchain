@@ -1,7 +1,26 @@
-.NavigationMenuRoot {
-  position: relative;
+.root {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   width: 100vw;
-  z-index: 1;
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+.tab {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.button {
+  display: flex;
+  margin-top: 4px;
+  margin-right: 3em;
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
 }

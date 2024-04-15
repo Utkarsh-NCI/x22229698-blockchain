@@ -1,31 +1,79 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./navbar.module.css";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { Link, useLocation } from "react-router-dom";
-
-const CustomLink = ({ href, ...props }) => {
-  let location = useLocation();
-  const isActive = href === location.pathname;
-
-  return (
-    <NavigationMenu.Link asChild active={isActive}>
-      <Link href={href} className="NavigationMenuLink" {...props} />
-    </NavigationMenu.Link>
-  );
-};
+import { useLocation } from "react-router-dom";
+import { Button, TabNav } from "@radix-ui/themes";
+import { useMetaMask } from "../../hooks/useMetaMask";
+import { useMessage } from "../../hooks/useMessage";
+import { Outlet } from "react-router-dom";
+import Message from "../message";
 
 const Nav = () => {
+  const {
+    wallet,
+    hasProvider,
+    isConnecting,
+    connectMetaMask,
+    errorMessage,
+    clearError,
+  } = useMetaMask();
+  let location = useLocation();
+  const isActive = (href) => href === location.pathname;
+  const logout = () => {
+    window.ethereum.request({
+      method: "wallet_revokePermissions",
+      params: [
+        {
+          eth_accounts: {},
+        },
+      ],
+    });
+  };
+
+  const { setMsgColor, message } = useMessage();
+
+  useEffect(() => {
+    if (errorMessage) {
+      setMsgColor(errorMessage, "red");
+    }
+    return () => {
+      clearError();
+    };
+  }, [errorMessage, setMsgColor, clearError]);
+
+  const navMetaSite = () => {
+    window.open("https://metamask.io", "_blank");
+  };
   return (
-    <NavigationMenu.Root className={style.NavigationMenuRoot}>
-      <NavigationMenu.List>
-        <NavigationMenu.Item>
-          <CustomLink href="/">Home</CustomLink>
-        </NavigationMenu.Item>
-        <NavigationMenu.Item>
-          <CustomLink href="/about">About</CustomLink>
-        </NavigationMenu.Item>
-      </NavigationMenu.List>
-    </NavigationMenu.Root>
+    <div className={style.layout}>
+      <div className={style.root}>
+        <div className={style.tab}>
+          <TabNav.Root className={style.tab}>
+            <TabNav.Link href="/" active={isActive("/")}>
+              Home
+            </TabNav.Link>
+            <TabNav.Link href="/news" active={isActive("/news")}>
+              News
+            </TabNav.Link>
+          </TabNav.Root>
+        </div>
+
+        <div className={style.button}>
+          {!hasProvider ? (
+            <Button onClick={navMetaSite}>Install MetaMask</Button>
+          ) : window.ethereum?.isMetaMask && wallet.accounts.length < 1 ? (
+            <Button onClick={connectMetaMask} disabled={isConnecting}>
+              Connect Metamask
+            </Button>
+          ) : (
+            <Button onClick={logout} disabled={isConnecting}>
+              Logout
+            </Button>
+          )}
+        </div>
+      </div>
+      <Outlet />
+      {message && <Message />}
+    </div>
   );
 };
 
