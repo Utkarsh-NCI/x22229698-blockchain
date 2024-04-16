@@ -12,10 +12,7 @@ const News = () => {
     const res_json = await res.json();
     const _news = res_json.articles;
     let filterNews = [];
-    filterNews = _news.filter(
-      (_article) =>
-        _article["description"] !== null && _article["urlToImage"] !== null
-    );
+    filterNews = _news.filter((_article) => _article["description"] !== null);
     console.log(filterNews);
     setNews(filterNews);
   };
