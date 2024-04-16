@@ -1,0 +1,24 @@
+.rootContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30%;
+}
+
+.tableDiv {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: 2em;
+}
+
+.button {
+  width: 120px;
+  align-self: center;
+}

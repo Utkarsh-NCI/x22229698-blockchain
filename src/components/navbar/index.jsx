@@ -51,11 +51,14 @@ const Nav = () => {
             <TabNav.Link href="/" active={isActive("/")}>
               Home
             </TabNav.Link>
+            <TabNav.Link href="/seller" active={isActive("/seller")}>
+              Seller
+            </TabNav.Link>
             <TabNav.Link href="/news" active={isActive("/news")}>
               News
             </TabNav.Link>
-            <TabNav.Link href="/seller" active={isActive("/seller")}>
-              Seller
+            <TabNav.Link href="/donation" active={isActive("/donation")}>
+              Donation
             </TabNav.Link>
           </TabNav.Root>
         </div>

@@ -6,6 +6,7 @@ import News from "./pages/news";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Nav from "./components/navbar";
 import Seller from "./pages/seller";
+import Donation from "./pages/donation";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/seller",
         element: <Seller />,
+      },
+      {
+        path: "/donation",
+        element: <Donation />,
       },
     ],
   },
