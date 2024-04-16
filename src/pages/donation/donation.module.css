@@ -22,3 +22,8 @@
   width: 120px;
   align-self: center;
 }
+
+.heading {
+  display: flex;
+  flex-direction: row;
+}

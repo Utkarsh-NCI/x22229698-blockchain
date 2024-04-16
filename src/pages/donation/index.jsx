@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   DataList,
+  Separator,
   Strong,
   Table,
   TextField,
@@ -99,12 +100,22 @@ const Donation = () => {
       <div className={style.info}>
         <DataList.Root>
           <DataList.Item>
+            <DataList.Label>
+              Total donations collected in contract
+            </DataList.Label>
+            <DataList.Value>
+              {formatBalance(totalDonation)} <Strong>&nbsp;{" ETH"}</Strong>
+            </DataList.Value>
+          </DataList.Item>
+          <DataList.Item>
             <DataList.Label>Address</DataList.Label>
             <DataList.Value>{address}</DataList.Value>
           </DataList.Item>
           <DataList.Item>
-            <DataList.Label>Donation till date</DataList.Label>
-            <DataList.Value>{formatBalance(indiDonation)} ETH</DataList.Value>
+            <DataList.Label>Individual contribution</DataList.Label>
+            <DataList.Value>
+              {formatBalance(indiDonation)} <Strong>&nbsp;{" ETH"}</Strong>
+            </DataList.Value>
           </DataList.Item>
           <Box maxWidth="600px">
             <TextField.Root
@@ -118,10 +129,6 @@ const Donation = () => {
           <Button onClick={sendDonate} size={2} className={style.button}>
             Donate
           </Button>
-          <DataList.Item>
-            <DataList.Label>Total donations collected</DataList.Label>
-            <DataList.Value>{formatBalance(totalDonation)} ETH</DataList.Value>
-          </DataList.Item>
         </DataList.Root>
       </div>
       <div className={style.tableDiv}>
@@ -139,7 +146,8 @@ const Donation = () => {
                 <Table.Row key={_i.addr}>
                   <Table.RowHeaderCell>{_i.addr}</Table.RowHeaderCell>
                   <Table.Cell>
-                    {formatBalance(_i.amountByAddr)} <Strong>ETH</Strong>
+                    {formatBalance(_i.amountByAddr)}&nbsp;{" "}
+                    <Strong>{"ETH"}</Strong>
                   </Table.Cell>
                 </Table.Row>
               ))}
