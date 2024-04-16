@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   DataList,
+  Heading,
   Separator,
   Strong,
   Table,
@@ -98,7 +99,8 @@ const Donation = () => {
   return (
     <div className={style.rootContainer}>
       <div className={style.info}>
-        <DataList.Root>
+        <Heading>Donations for children sports activites and equipment</Heading>
+        <DataList.Root mt={"20px"}>
           <DataList.Item>
             <DataList.Label>
               Total donations collected in contract
