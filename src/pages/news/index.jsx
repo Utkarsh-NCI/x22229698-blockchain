@@ -7,7 +7,7 @@ const News = () => {
 
   const fetchNews = async () => {
     const url =
-      "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=79dfa1154873475bbc47172dfb39f998";
+      "https://gnews.io/api/v4/search?q=sports&lang=en&country=us&max=10&apikey=e8d1d95266c98e172642b301c2e61219";
     const res = await fetch(url);
     const res_json = await res.json();
     const _news = res_json.articles;
@@ -34,7 +34,7 @@ const News = () => {
           title={_article.title}
           description={_article.description}
           url={_article.url}
-          urlToImage={_article.urlToImage}
+          urlToImage={_article.image}
         />
       ))}
     </div>
